@@ -2,6 +2,7 @@ const graphql = require('graphql');
 
 const { GraphQLObjectType, GraphQLString, GraphQLSchema } = graphql;
 
+const _find = require('lodash/find');
 // Dummy data
 const books = [
   { name: 'Game of Thrones', genre: 'Fantasy', id: 1 },
@@ -34,6 +35,7 @@ const RootQuery = new GraphQLObjectType({
       args: { id: { type: GraphQLString } },
       resolve(parent, args) {
         // code to get date from DB
+        return _find(books, { id: args.id })
       }
     }
   }
