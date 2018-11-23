@@ -1,6 +1,6 @@
 const graphql = require('graphql');
 
-const { GraphQLID, GraphQLObjectType, GraphQLString, GraphQLSchema } = graphql;
+const { GraphQLID, GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLNonNull } = graphql;
 
 const _find = require('lodash/find');
 // Dummy data
