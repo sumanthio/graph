@@ -3,7 +3,7 @@ const graphqlHTTP = require('express-graphql');
 const schema = require('./schemas/schema');
 const app = express();
 
-//Need to be added:
+// Need to be added:
 // mongoose schema.
 // Create mlab collections
 // Mutations with the collections
