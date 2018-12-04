@@ -1,7 +1,6 @@
 import { GraphQLID, GraphQLList, GraphQLObjectType, GraphQLSchema, GraphQLString } from 'graphql';
 import find from 'lodash/find';
-//const find = require('lodash/find');
-// Dummy data
+
 const Houses = [
   {
     "id": "1",
@@ -227,7 +226,6 @@ const Houses = [
     ]
   }
 ]
-
 
 const Characters = [
   {
