@@ -1,7 +1,7 @@
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
+import mongoose from 'mongoose';
 import { DB } from './config';
-
 const schema = require('./schemas/schema');
 const app = express();
 
@@ -11,7 +11,10 @@ const app = express();
 // Mutations with the collections
 // Write mutations for adding house and character
 
-console.log(DB.url);
+mongoose.connect(DB.url, { useNewUrlParser: true });
+mongoose.connection.once('open', () => {
+  console.log('DB connected');
+})
 
 app.use('/graphql', graphqlHTTP({
   schema,
