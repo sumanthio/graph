@@ -1,8 +1,6 @@
-const graphql = require('graphql');
-
-const { GraphQLID, GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLNonNull, GraphQLList } = graphql;
-
-const _find = require('lodash/find');
+import { GraphQLID, GraphQLList, GraphQLObjectType, GraphQLSchema, GraphQLString } from 'graphql';
+import find from 'lodash/find';
+//const find = require('lodash/find');
 // Dummy data
 const Houses = [
   {
@@ -285,7 +283,7 @@ const CharacterType = new GraphQLObjectType({
     house: {
       type: HouseType,
       resolve(parent) {
-        return _find(Houses, { id: parent.houseId })
+        return find(Houses, { id: parent.houseId })
       }
     }
   })
@@ -299,14 +297,14 @@ const RootQuery = new GraphQLObjectType({
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
         // code to get date from DB
-        return _find(Houses, { id: args.id })
+        return find(Houses, { id: args.id })
       }
     },
     character: {
       type: CharacterType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        return _find(Characters, { id: args.id })
+        return find(Characters, { id: args.id })
       }
     }
   }

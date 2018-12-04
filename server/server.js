@@ -1,7 +1,8 @@
-const express = require('express');
-const graphqlHTTP = require('express-graphql');
+import express from 'express';
+import graphqlHTTP from 'express-graphql';
+import { DB } from './config';
+
 const schema = require('./schemas/schema');
-const DB = require('./config');
 const app = express();
 
 // Need to be added:
@@ -10,6 +11,7 @@ const app = express();
 // Mutations with the collections
 // Write mutations for adding house and character
 
+console.log(DB.url);
 
 app.use('/graphql', graphqlHTTP({
   schema,
