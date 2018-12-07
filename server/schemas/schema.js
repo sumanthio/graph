@@ -11,8 +11,8 @@ const HouseType = new GraphQLObjectType({
     name: { type: GraphQLString },
     characters: {
       type: new GraphQLList(CharacterType),
-      resolve() {
-        return Character.findById(parent.id)
+      resolve(parent, args) {
+        return Character.find({ houseId: parent.id })
       }
     }
   })
@@ -30,7 +30,7 @@ const CharacterType = new GraphQLObjectType({
     house: {
       type: HouseType,
       resolve(parent, args) {
-        return House.findById(parent.id);
+        return House.findById(parent.houseId);
       }
     }
   })
