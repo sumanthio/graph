@@ -1,15 +1,14 @@
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema;
-
-const characterSchema = new Schema({
-  characterName: String,
-  houseId: Number,
-  characterImageThumb: String,
-  characterImageFull: String,
-  actorName: String,
-  siblings: Array,
-  kills: Array
-})
+const characterSchema = mongoose.Schema(
+  {
+    characterName: { type: String },
+    houseId: { type: String },
+    characterImageThumb: { type: String },
+    characterImageFull: { type: String },
+    actorName: { type: String },
+    siblings: { type: Array },
+    kills: { type: Array }
+  }, { collection: 'Character' })
 
 export default mongoose.model('Character', characterSchema);

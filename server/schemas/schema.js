@@ -1,7 +1,8 @@
 import { GraphQLID, GraphQLList, GraphQLObjectType, GraphQLSchema, GraphQLString } from 'graphql';
-//Models
+// Models
 import Character from '../models/character';
 import House from '../models/house';
+
 
 const HouseType = new GraphQLObjectType({
   name: 'house',
@@ -9,7 +10,10 @@ const HouseType = new GraphQLObjectType({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
     characters: {
-      type: new GraphQLList(GraphQLString)
+      type: new GraphQLList(CharacterType),
+      resolve() {
+        return Character.findById(parent.id)
+      }
     }
   })
 });
@@ -18,7 +22,7 @@ const CharacterType = new GraphQLObjectType({
   name: 'character',
   fields: () => ({
     id: { type: GraphQLID },
-    houseId: { type: GraphQLString },
+    houseId: { type: GraphQLID },
     characterName: { type: GraphQLString },
     actorName: { type: GraphQLString },
     siblings: { type: new GraphQLList(GraphQLString) },
@@ -75,18 +79,21 @@ const Mutation = new GraphQLObjectType({
       type: CharacterType,
       args: {
         characterName: { type: GraphQLString },
-        actorName: { type: GraphQLString }
+        actorName: { type: GraphQLString },
+        houseId: { type: GraphQLID }
       },
       resolve(parent, args) {
         let character = new Character({
           characterName: args.characterName,
-          actorName: args.actorName
+          actorName: args.actorName,
+          houseId: args.houseId
         })
         return character.save();
       }
     }
   }
 });
+
 module.exports = new GraphQLSchema({
   query: RootQuery,
   mutation: Mutation
