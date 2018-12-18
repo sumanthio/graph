@@ -1,5 +1,6 @@
 import { gql } from 'apollo-boost';
-const getCharacters = gql`
+
+const getCharacter = gql`
 query GetCharacter(id: $ID)
 {
 character(id: $id){
@@ -12,5 +13,5 @@ character(id: $id){
 }
 `;
 
-export { getCharacters };
+export { getCharacter };
 
