@@ -40,6 +40,12 @@ const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
     houses: {
+      type: new GraphQLList(HouseType),
+      resolve(parent, args) {
+        return House.find({}, (houses) => { return houses; });
+      }
+    },
+    house: {
       type: HouseType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {

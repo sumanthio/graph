@@ -13,7 +13,7 @@ class Houses extends Component {
       return (
         <div>
           <h2>{house.name}</h2>
-          <div></div>
+          <CharacterList list="{house.characters}"></CharacterList>
         </div>
       )
     }

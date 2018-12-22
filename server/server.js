@@ -5,13 +5,6 @@ import { DB } from './config';
 const schema = require('./schemas/schema');
 const app = express();
 
-// Need to be added:
-// Brush up MongoDB
-// models, shcemas, ORMS may be
-// mongoose schema.
-// Mutations with the collections
-// Write mutations for adding house and character
-
 mongoose.connect(DB.url, { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
   console.log('DB connected');

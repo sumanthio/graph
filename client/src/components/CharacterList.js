@@ -5,7 +5,10 @@ class CharacterList extends Component {
   constructor() {
 
   }
-  displayCharacters() { }
+  displayCharacters() {
+    // this returns the list of the characters from the Graph.
+    // click on the character it will load the characters data
+  }
   render() {
     return (
       <div className="character-list">

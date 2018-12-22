@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
 import ApolloClient from 'apollo-boost';
-import {ApolloProvider} from 'react-apollo';
-import React, {Component} from 'react';
-
+import React, { Component } from "react";
+import { ApolloProvider } from 'react-apollo';
 
 const client = new ApolloClient({
   uri: 'http://localhost:1024/graphql'
@@ -10,11 +8,13 @@ const client = new ApolloClient({
 class App extends Component {
   render() {
     return (
-     <ApolloProvider	client={client}>
+      <ApolloProvider client={client}>
         <div id="main">
-
+          <h1>Game of Thrones</h1>
+          <House />
+          <AddHouse />
         </div>
-     </ApolloProvider>
+      </ApolloProvider>
     );
   }
 }
