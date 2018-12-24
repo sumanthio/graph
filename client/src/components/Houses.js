@@ -1,32 +1,35 @@
 import React, { Component } from "react";
-import { graphql } from "react-apollo";
-import { getHousesQuery } from '../queries';
+import { graphql } from 'react-apollo';
+import { getHouses } from '../queries';
+import House from './House';
 class Houses extends Component {
-  constructor() {
+  constructor(props) {
+    super(props);
     this.state = {
       selectedHouse: null
     }
   }
-  displayHouseData() {
-    let house = this.props.data;
-    if (house) {
+  displayHouses() {
+    let { houses } = this.props.data;
+    if (houses) {
       return (
-        <div>
-          <h2>{house.name}</h2>
-          <CharacterList list="{house.characters}"></CharacterList>
-        </div>
+        <ul>
+          {houses.map((house) =>
+            <li key={house.id} onClick={e => this.setState({ selectedHouse: house.id })}>{house.name}</li>
+          )}
+        </ul>
       )
     }
   }
   render() {
     return (
-      <div className="character-list">
-        <ul>
-          <li>{this.displayHouseData()}</li>
-        </ul>
+      <div className="houses">
+        <h2>Houses</h2>
+        {this.displayHouses()}
+        <House houseId={this.state.selectedHouse} />
       </div>
     )
   }
 }
 
-export default graphql(getHousesQuery)(Houses);
+export default graphql(getHouses)(Houses);
