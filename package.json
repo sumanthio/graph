@@ -1,0 +1,46 @@
+{
+  "name": "grapher",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "apollo-boost": "^0.1.22",
+    "graphql": "^14.0.2",
+    "react": "^16.6.3",
+    "react-apollo": "^2.3.2",
+    "react-dom": "^16.6.3",
+    "react-scripts": "2.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.3.14"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "prod": "NODE_ENV=production nodemon --exec babel-node server.js",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "nodemon": "^1.18.7"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
