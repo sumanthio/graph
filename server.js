@@ -2,13 +2,13 @@ import cors from 'cors';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import mongoose from 'mongoose';
-import { DB } from './config';
+//import { DB } from './config';
 const schema = require('./schemas/schema');
-const https = require('https');
+//const https = require('https');
 const http = require('http');
 const environment = process.env.NODE_ENV;
 const app = express();
-mongoose.connect(DB.url, { useNewUrlParser: true });
+mongoose.connect(process.env.DB, { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
   console.log('DB connected');
 })
