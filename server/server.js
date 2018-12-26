@@ -15,6 +15,18 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true
 }));
 
+
+switch (environment) {
+  case 'production':
+    app.use(express.static('./build/'));
+    app.use('/*', express.static('./build/index.html'));
+    break;
+  default:
+    console.log('** DEV **');
+    break;
+}
+
+
 app.listen(1024, () => {
   console.log('Listening on 1024');
 })
